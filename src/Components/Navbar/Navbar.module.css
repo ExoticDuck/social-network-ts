@@ -1,0 +1,39 @@
+.nav {
+  grid-area: n;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  margin: 5px;
+  padding: 5px;
+}
+
+.item a {
+  color: white;
+  text-decoration: none;
+}
+
+.active-link {
+  color: rgb(0, 217, 255);
+  text-decoration: rgb(106, 0, 206) underline double;
+}
+
+.item a.active {
+  color: rgb(33, 210, 216);
+  text-decoration: blueviolet underline;
+}
+
+.friend {
+  width: fit-content;
+  height: 50px;
+  display: inline-block;
+  color: white;
+  margin-left: 15px;
+  text-align: center;
+  line-height: height;
+}
+
+.friend img {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}

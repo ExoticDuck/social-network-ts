@@ -1,0 +1,25 @@
+.App {
+  display: grid;
+  margin: 0 auto;
+  grid-template-rows: 80px 1fr;
+  grid-auto-columns: 2fr 10fr;
+  grid-gap: 5px;
+  width: 100%;
+  grid-template-areas: 
+  "h h"
+  "n c";
+  background-color: coral
+}
+
+.app-wrapper-content {
+  grid-area: c;
+  background-color: lightcoral;
+  margin: 5px;
+  padding: 5px;
+}
+.active-link {
+  color:rgb(0, 217, 255);
+  text-decoration: rgb(106, 0, 206) underline double;
+}
+
+

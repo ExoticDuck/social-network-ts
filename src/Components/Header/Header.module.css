@@ -1,0 +1,12 @@
+.header {
+    grid-area: h;
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    margin: 5px;
+    padding: 5px;
+  }
+  
+  .header img {
+    width: 70px;
+  }
