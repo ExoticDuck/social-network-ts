@@ -26,15 +26,13 @@ let initialState: MessagePageType = {
 const MessagesReducer = (state: MessagePageType = initialState, action: GeneralACType) => {
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_TEXT: {
-            state.newMessageText = action.payload.newText;
-            return {...state}
+            return {...state, newMessageText: action.payload.newText}
         }
         case SEND_MESSAGE: {
             let id = state.messagesData.length + 1;
             let newMessage = {id: id, text: state.newMessageText};
-            state.messagesData.push(newMessage);
-            state.newMessageText = "";
-            return {...state}
+            return {...state, messagesData: [...state.messagesData, newMessage], newMessageText: ""}
+            
         }
         default: return state;
     }

@@ -11,7 +11,7 @@ import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import NavbarContainer from './Components/Navbar/NavbarContainer';
 
 //оставь надежду всяк сюда входящий
-//* урок 44 18:30 закончен
+//* урок 48 закончен
 
 type AppPropsType = {
   state?: StateType

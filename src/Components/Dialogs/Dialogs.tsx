@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import {MessagePageType, StateType} from '../../redux/store';
+import {MessagePageType} from '../../redux/store';
 import s from './Dialogs.module.css'
 
 type DialogsPropsType = {
