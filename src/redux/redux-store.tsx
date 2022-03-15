@@ -2,7 +2,6 @@ import { combineReducers, createStore } from "redux";
 import MessagesReducer from "./MessagesReducer";
 import ProfileReducer from "./ProfileReducer";
 import SidebarReducer from "./SidebarReducer";
-import { StoreType } from "./store";
 
 let reducers = combineReducers({
     profilePage: ProfileReducer,
@@ -10,6 +9,8 @@ let reducers = combineReducers({
     sidebar: SidebarReducer
 })
 
-let store:StoreType = createStore(reducers);
+export type AppStateType = ReturnType<typeof reducers>;
+
+let store = createStore(reducers);
 
 export default store;

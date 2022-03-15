@@ -19,11 +19,11 @@ const ProfileReducer = (state: ProfilePageType = initialState, action: GeneralAC
             let newPost = { id: id, message: state.newPostText, likesCount: 0 };
             state.postData.push(newPost);
             state.newPostText = "";
-            return state;
+            return {...state};
         }
         case UPDATE_NEW_POST_TEXT: {
             state.newPostText = action.payload.newText;
-            return state;
+            return {...state};
         }
         default: return state;
     }

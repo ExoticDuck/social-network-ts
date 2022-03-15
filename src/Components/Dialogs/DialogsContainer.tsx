@@ -1,31 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { addMessageAC, updateNewMessageTextAC } from '../../redux/MessagesReducer';
-import StoreContext from '../../store-context';
+import { AppStateType } from '../../redux/redux-store';
 import Dialogs from './Dialogs';
 
-type DialogsContainerPropsType = {
+let mapStateToProps = (state: AppStateType) => { //принимает в параметры state
+    return { //для данных из стейта 
+        dialogsPage: state.messagesPage
+    }
+}
+let mapDispatchToProps = (dispatch: any) => {
+    return { //для коллбэков
+        addMessage: () => {dispatch(addMessageAC())},
+        updateNewMessageText: (text: string) => {dispatch(updateNewMessageTextAC(text));},
+    }
 }
 
-const DialogsContainer: React.FC<DialogsContainerPropsType> = () => {
-    return(
-    <StoreContext.Consumer>
-        {
-            (store) => {
-                let messageOnChange = (text: string) => {
-                    store.dispatch(updateNewMessageTextAC(text));
-                }
-            
-                let addMessage = () => {
-                    store.dispatch(addMessageAC())
-                }
-
-                return (
-                    <Dialogs addMessage={addMessage} updateNewMessageText={messageOnChange} dialogsPage={store.getState()}/>
-                );
-            }
-        }
-    </StoreContext.Consumer>
-    ); 
-}
+let DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;
