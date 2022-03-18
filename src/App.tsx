@@ -9,6 +9,7 @@ import {Route, Routes } from 'react-router-dom'
 import { StateType} from './redux/store';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import NavbarContainer from './Components/Navbar/NavbarContainer';
+import { UsersContainer } from './Components/Users/UsersContainer';
 
 //оставь надежду всяк сюда входящий
 //* урок 48 закончен
@@ -31,6 +32,7 @@ const App: React.FC<AppPropsType> = (props) => {
           <Route path='/news' element={<News/>} />
           <Route path='/music' element={<Music/>} />
           <Route path='/settings' element={<Settings/>} />
+          <Route path='/users' element={<UsersContainer/>} />
           </Routes>
         </div> 
       </div>

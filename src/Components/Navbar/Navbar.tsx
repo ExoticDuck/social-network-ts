@@ -31,6 +31,9 @@ const Navbar: React.FC<NavbarPropsType> = (props) => {
       <div className={s.item}>
         <NavLink to="/settings" className={({isActive}) => isActive ? "active-link" : ""}>Settings</NavLink>
       </div>
+      <div className={s.item}>
+        <NavLink to="/users" className={({isActive}) => isActive ? "active-link" : ""}>Users</NavLink>
+      </div>
       <div>
         <div className={s.friends}>Friends</div>
         {friendsItems}

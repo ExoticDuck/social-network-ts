@@ -1,0 +1,35 @@
+.Avatar img {
+    height: 80px;
+    border-radius: 50%;
+}
+
+
+.FollowButton {
+    width: 80px;
+    color: 20px;
+    background-color: rgba(92, 112, 202, 0.5);
+    border-radius: 8px;
+}
+
+.UserCard {
+    border: 2px solid black;
+    width: 300px;
+    height: 120px;
+}
+
+.avatarBlock {
+    height: 120px;
+    width: 100px;
+    float: left;
+    position: relative;
+}
+
+.userInfo {
+    width: 120px;
+
+}
+
+.infoBlock {
+    float: right;
+    
+}
