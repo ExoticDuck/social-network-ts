@@ -8,7 +8,12 @@ class UsersClass extends React.Component<UsersPropsType, {}> {
 
     constructor(props: UsersPropsType) {
         super(props);
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(
+        axios.get("https://social-network.samuraijs.com/api/1.0/users", {
+            withCredentials: true,
+            headers: {
+                'API-KEY': 'c4deeac1-451b-4ef8-8dc8-a4ffeee3c9cc'
+            }
+        }).then(
             response => this.props.setUsers(response.data.items)
         );
     }

@@ -34,4 +34,4 @@ let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
 
 
 // export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users)
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersClass)
+export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersClass);
