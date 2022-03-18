@@ -4,7 +4,7 @@ import { UserType } from "../../redux/UsersReducer";
 import s from "./Users.module.css"
 import userPic from "../../img/user.png"
 
-type UsersPropsType = {
+export type UsersPropsType = {
     users: Array<UserType>
     follow: (id: number) => void
     unfollow: (id: number) => void
