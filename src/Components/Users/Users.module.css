@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
 .Avatar img {
     height: 80px;
     border-radius: 50%;
@@ -34,7 +36,30 @@
     width: 60%;
 }
 
+.page {
+transition: all .2s;
+margin-left: 4px;
+}
+
+.page:hover {
+    font-size: 35px;
+    color: #fdbe34;
+    cursor: pointer;
+}
+
 .SelectedPage {
     font-weight: bold;
-    text-decoration: underline;
+    font-weight: 400;
+    font-size: 35px;
+    color: #fdbe34;
 }
+
+.PagesContainer {
+    padding-top: 10px;
+    height: 40px;
+    font-family: 'Arvo', serif;
+    font-weight: 300;
+    font-size: 23px;
+    transition: all .8s;
+}
+
