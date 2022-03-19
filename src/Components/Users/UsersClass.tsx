@@ -67,21 +67,22 @@ class UsersClass extends React.Component<UsersPropsType, {}> {
                             <div className={s.Avatar}>
                                 <img src={user.photos.small !== null ? user.photos.small : userPic } alt="Avatar" />
                             </div>
-                            <div>
-                                {
-                                    user.followed ? <button className={s.FollowButton} onClick={() => this.props.unfollow(user.id)}>Unfollow</button> : <button className={s.FollowButton} onClick={() => this.props.follow(user.id)}>Follow</button>
-                                }
-                            </div>
+                            
                         </span>
                         <div className={s.infoBlock}>
                             <span className={s.userInfo}>
                                 <div>{user.name}</div>
-                                <div>{user.status}</div>
+                                <div className={s.Status}>{user.status}</div>
                             </span>
-                            <span>
-                                <div>{'user.location.country'}</div>
-                                <div>{'user.location.city'}</div>
+                            <span className={s.location}>
+                                <div>{'Country'}</div>
+                                <div>{'City'}</div>
                             </span>
+                            <div className={s.followBox}>
+                                {
+                                    user.followed ? <button className={s.FollowButton} onClick={() => this.props.unfollow(user.id)}>Unfollow</button> : <button className={s.FollowButton} onClick={() => this.props.follow(user.id)}>Follow</button>
+                                }
+                            </div>
                         </div>
                     </div>)
                 }

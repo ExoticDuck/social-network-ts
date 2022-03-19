@@ -1,22 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400&display=swap');
 
 .Avatar img {
     height: 80px;
     border-radius: 50%;
 }
 
+.Avatar {
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 100px;
+}
+
+.followBox {
+    /* margin-top: 20px;
+    margin-left: 85px; */
+    position: absolute;
+    top: 80px;
+    left: 125px;
+}
 
 .FollowButton {
-    width: 80px;
-    color: 20px;
-    background-color: rgba(92, 112, 202, 0.5);
-    border-radius: 8px;
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    background-color: #350c5a;
+    border-radius: 15px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 16px;
+    transition: all .2s;
+}
+
+.FollowButton:hover {
+    color: #fdbe34;
 }
 
 .UserCard {
-    border: 2px solid black;
-    width: 300px;
+    width: 350px;
     height: 120px;
+    margin-bottom: 15px;
 }
 
 .avatarBlock {
@@ -24,16 +46,39 @@
     width: 100px;
     float: left;
     position: relative;
+    background-color: #330b61;
+    border-radius: 10px 0 0 10px;
 }
 
 .userInfo {
-    width: 120px;
+    width: 200px;
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    display: block;
+}
 
+.Status {
+    font-size: 15px;
+}
+
+.location {
+   position: absolute;
+   top: 80px;
+   left: 10px;
+   
 }
 
 .infoBlock {
     float: right;
-    width: 60%;
+    width: 71.4%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 0 10px 10px 0 ;
+    position: relative;
+    font-family: 'Fredoka', sans-serif;
 }
 
 .page {
