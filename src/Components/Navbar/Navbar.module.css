@@ -1,32 +1,43 @@
 .nav {
   grid-area: n;
-  background-color: rgba(0, 0, 0, 0.4);
-  -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);
-  margin: 5px;
+  background-color: #fff;
+  /* -webkit-backdrop-filter: blur(3px); */
+  /* backdrop-filter: blur(3px); */
+  /* margin: 5px; */
+  box-shadow: 5px 5px 14px -7px rgba(34, 60, 80, 0.46);
   padding: 5px;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.item {
+  height: 50px;
+  width: 220px;
+  text-align: left;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  padding-left: 20px;
 }
 
 .item a {
-  color: white;
+  /* color: white; */
   text-decoration: none;
+  line-height: 50px;
+  font-size: 16px;
+  color: #777d74
 }
+
 
 .active-link {
-  color: rgb(0, 217, 255);
-  text-decoration: rgb(106, 0, 206) underline double;
-}
-
-.item a.active {
-  color: rgb(33, 210, 216);
-  text-decoration: blueviolet underline;
+ 
+  color: #50b5ff;
 }
 
 .friend {
   width: fit-content;
   height: 50px;
-  display: inline-block;
-  color: white;
+  display: block;
+  color: #50b5ff;
   margin-left: 15px;
   text-align: center;
   line-height: height;

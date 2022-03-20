@@ -1,5 +1,6 @@
 .item {
-    color: white
+    color: black;
+    margin-bottom: 5px;
 }
 .item img {
     width: 40px;

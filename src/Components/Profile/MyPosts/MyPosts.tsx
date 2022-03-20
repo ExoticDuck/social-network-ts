@@ -29,7 +29,7 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
     let postsItems = props.posts.map((p) => <Post message={p.message} likesCount={p.likesCount} />)
 
     return (
-        <div>
+        <div className={s.PostsContainer}>
             <h3>My posts</h3>
             <div>
                 <div>

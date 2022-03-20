@@ -1,10 +1,13 @@
 .header {
     grid-area: h;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: #fff;
     -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
-    margin: 5px;
+    /* margin: 5px; */
     padding: 5px;
+    /*box-shadow: 0 15px 10px 0 rgba(0,0,0,0.2);*/
+    box-shadow: 1px 10px 22px -7px rgba(34, 60, 80, 0.19);
+    padding-left: 15px;
   }
   
   .header img {

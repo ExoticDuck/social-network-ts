@@ -1,21 +1,23 @@
 .App {
   display: grid;
   margin: 0 auto;
-  grid-template-rows: 80px 1fr;
-  grid-auto-columns: 2fr 10fr;
-  grid-gap: 5px;
+  grid-template-rows: 70px 1fr;
+  grid-auto-columns: 1fr 10fr;
+  /* grid-gap: 5px; */
   width: 100%;
+  height: 100vh;
   grid-template-areas: 
   "h h"
   "n c";
-  background-color: coral
+  background-color: #f8f9fa;
 }
 
 .app-wrapper-content {
   grid-area: c;
-  background-color: lightcoral;
-  margin: 5px;
+  background-color: #f8f9fa;
+  /* margin: 5px; */
   padding: 5px;
+  margin: 10px;
 }
 .active-link {
   color:rgb(0, 217, 255);
