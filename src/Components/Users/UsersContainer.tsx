@@ -77,7 +77,7 @@ class UsersClass extends React.Component<UsersPropsType, {}> {
     render() {
         return (
             <>
-                {this.props.isFetching ? <Preloader/>   : null}
+                {this.props.isFetching ? <Preloader/> : null}
                 <UsersAPIComponent
                     totalUsersCount={this.props.totalUsersCount}
                     pageSize={this.props.pageSize}

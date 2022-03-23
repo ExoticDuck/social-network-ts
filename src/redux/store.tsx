@@ -1,5 +1,5 @@
 import MessagesReducer from "./MessagesReducer"
-import ProfileReducer from "./ProfileReducer"
+import ProfileReducer, { ProfileType } from "./ProfileReducer"
 import SidebarReducer from "./SidebarReducer"
 
 export type StoreType = {
@@ -32,6 +32,7 @@ export type FriendType = {
 export type ProfilePageType = {
     postData: Array<PostType>
     newPostText: string
+    profile: ProfileType | null
 }
 export type MessagePageType = {
     dialogsData: Array<DialogType>
@@ -55,7 +56,8 @@ let store: StoreType = {
                 { id: 2, message: "it is my firt post", likesCount: 15 },
                 { id: 2, message: "aaaaaa", likesCount: 1 }
             ],
-            newPostText: ""
+            newPostText: "", 
+            profile: null
         },
         messagesPage: {
             dialogsData: [

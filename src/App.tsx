@@ -10,6 +10,7 @@ import { StateType} from './redux/store';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import NavbarContainer from './Components/Navbar/NavbarContainer';
 import { UsersContainer } from './Components/Users/UsersContainer';
+import ProfileContainer from './Components/Profile/ProfileContainer';
 
 //оставь надежду всяк сюда входящий
 //* урок 57 закончен
@@ -28,7 +29,7 @@ const App: React.FC<AppPropsType> = (props) => {
         <div className="app-wrapper-content">
           <Routes>
           <Route  path='/dialogs' element={< DialogsContainer />}/>
-          <Route path='/profile' element={<Profile />}/>
+          <Route path='/profile' element={<ProfileContainer />}/>
           <Route path='/news' element={<News/>} />
           <Route path='/music' element={<Music/>} />
           <Route path='/settings' element={<Settings/>} />
