@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
-import Profile from './Components/Profile/Profile';
 import News from './Components/News/News';
 import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
@@ -29,7 +28,7 @@ const App: React.FC<AppPropsType> = (props) => {
         <div className="app-wrapper-content">
           <Routes>
           <Route  path='/dialogs' element={< DialogsContainer />}/>
-          <Route path='/profile' element={<ProfileContainer />}/>
+          <Route path='/profile/:userId' element={<ProfileContainer />}/>
           <Route path='/news' element={<News/>} />
           <Route path='/music' element={<Music/>} />
           <Route path='/settings' element={<Settings/>} />

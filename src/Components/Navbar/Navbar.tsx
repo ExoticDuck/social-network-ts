@@ -17,7 +17,7 @@ const Navbar: React.FC<NavbarPropsType> = (props) => {
   return (
     <nav className={s.nav}>
       <div className={s.item}>
-        <NavLink to="/profile" className={({isActive}) => isActive ? "active-link" : ""}>Profile</NavLink>
+        <NavLink to="/profile/:userId" className={({isActive}) => isActive ? "active-link" : ""}>Profile</NavLink>
       </div>
       <div className={s.item}>
         <NavLink to="/dialogs" className={({isActive}) => isActive ? "active-link" : ""}>Messages</NavLink>
