@@ -13,3 +13,12 @@
   .header img {
     width: 70px;
   }
+
+  .LoginBlock {
+    float: right;
+  }
+
+  .LoginBlock a {
+    color: black;
+    text-decoration: none;
+  }

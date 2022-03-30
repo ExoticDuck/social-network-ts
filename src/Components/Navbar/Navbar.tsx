@@ -17,22 +17,22 @@ const Navbar: React.FC<NavbarPropsType> = (props) => {
   return (
     <nav className={s.nav}>
       <div className={s.item}>
-        <NavLink to="/profile/:userId" className={({isActive}) => isActive ? "active-link" : ""}>Profile</NavLink>
+        <NavLink to="/profile/:userId" className={(isActive) => isActive ? "active-link" : ""}>Profile</NavLink>
       </div>
       <div className={s.item}>
-        <NavLink to="/dialogs" className={({isActive}) => isActive ? "active-link" : ""}>Messages</NavLink>
+        <NavLink to="/dialogs" className={(isActive) => isActive ? "active-link" : ""}>Messages</NavLink>
       </div>
       <div className={s.item}>
-        <NavLink to="/news" className={({isActive}) => isActive ? "active-link" : ""}>News</NavLink>
+        <NavLink to="/news" className={(isActive) => isActive ? "active-link" : ""}>News</NavLink>
       </div>
       <div className={s.item}>
-        <NavLink to="/music" className={({isActive}) => isActive ? "active-link" : ""}>Music</NavLink>
+        <NavLink to="/music" className={(isActive) => isActive ? "active-link" : ""}>Music</NavLink>
       </div>
       <div className={s.item}>
-        <NavLink to="/settings" className={({isActive}) => isActive ? "active-link" : ""}>Settings</NavLink>
+        <NavLink to="/settings" className={(isActive) => isActive ? "active-link" : ""}>Settings</NavLink>
       </div>
       <div className={s.item}>
-        <NavLink to="/users" className={({isActive}) => isActive ? "active-link" : ""}>Users</NavLink>
+        <NavLink to="/users" className={(isActive) => isActive ? "active-link" : ""}>Users</NavLink>
       </div>
       <div>
         <div className={s.friends}>Friends</div>

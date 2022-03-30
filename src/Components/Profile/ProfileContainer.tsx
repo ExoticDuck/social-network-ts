@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
-import { PathMatch, useMatch} from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { ProfileType, SetUserProfile } from "../../redux/ProfileReducer";
 import { AppStateType } from "../../redux/redux-store";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
@@ -12,18 +12,15 @@ import s from "./Profile.module.css";
 type ProfileContainerPropsType = {
     profile: ProfileType | null
     SetUserProfile: (profile: ProfileType) => void
-    match: PathMatch<"userId"> | null
-}
-type ProfileURLContainerPropsType = {
-    profile: ProfileType | null
-    SetUserProfile: (profile: ProfileType) => void
+    match: any
 }
 
 class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
     
     componentDidMount() {
+        debugger
         let userId = this.props.match?.params.userId;
-        if(!userId) {
+        if(!userId || userId === ":userId") {
             userId = "3";
         }
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId, {
@@ -50,15 +47,11 @@ class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
 
 }
 
-const ProfileURLMatch = (props: ProfileURLContainerPropsType) => {
-  const match = useMatch('/profile/:userId/');
-  return <ProfileContainer {...props} match={match} />;
-}
-
+let WithURLContainer = withRouter<any, any>(ProfileContainer);
 let mapStateToProps = (state: AppStateType) => {
     return {
         profile: state.profilePage.profile
     }
 }
 
-export default connect(mapStateToProps, {SetUserProfile})(ProfileURLMatch);
+export default connect(mapStateToProps, {SetUserProfile})(WithURLContainer);
