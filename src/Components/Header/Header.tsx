@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import s from "./Header.module.css";
+import reactLogo from '../../img/logo.png'
 
 type HeaderPropsType = {
   setUserData: (id: number | null, email: string | null, login: string | null) => void
@@ -9,9 +10,8 @@ type HeaderPropsType = {
 }
 
 const Header: React.FC<any> = (props: HeaderPropsType) => {
-  debugger
   return <header className={s.header}>
-    <img src='https://www.softermii.com/assets/uploads/blog/20181127/inner-05.png' alt="react-logo"></img>
+    <img src={reactLogo} alt="logo" />
     <div className={s.LoginBlock}>
       {props.isAuth ? 
       props.login : 
