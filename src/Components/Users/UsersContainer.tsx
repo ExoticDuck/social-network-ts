@@ -5,6 +5,7 @@ import axios from "axios";
 import { Follow, SetCurrentPage, SetTotalUsersCount, SetUsers, ToggleIsFetching, Unfollow, UserType } from "../../redux/UsersReducer";
 import UsersAPIComponent from "./UsersAPIComponent";
 import Preloader from "../Preloader/Preloader";
+import { usersApi } from "../../api/api";
 
 type mapStateToPropsType = {
     users: Array<UserType>,
@@ -41,17 +42,12 @@ class UsersClass extends React.Component<UsersPropsType, {}> {
 
     componentDidMount() {
         this.props.ToggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=` + this.props.currentPage + `&count=` + this.props.pageSize, {
-            withCredentials: true,
-            headers: {
-                'API-KEY': 'c4deeac1-451b-4ef8-8dc8-a4ffeee3c9cc'
-            }
-        }).then(
-            response => {
-                setTimeout(() => this.props.ToggleIsFetching(false), 500)
+        usersApi.getUsers(this.props.currentPage, this.props.pageSize).then(
+            data => {
+                setTimeout(() => this.props.ToggleIsFetching(false), 200)
                 // this.props.toggleIsFetching(false)
-                this.props.SetUsers(response.data.items)
-                this.props.SetTotalUsersCount(response.data.totalCount)
+                this.props.SetUsers(data.items)
+                this.props.SetTotalUsersCount(data.totalCount)
             }
         );
     }
@@ -59,16 +55,11 @@ class UsersClass extends React.Component<UsersPropsType, {}> {
     onPageChanged = (page: number) => {
         this.props.SetCurrentPage(page)
         this.props.ToggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`, {
-            withCredentials: true,
-            headers: {
-                'API-KEY': 'c4deeac1-451b-4ef8-8dc8-a4ffeee3c9cc'
-            }
-        }).then(
-            response => {
-                setTimeout(() => this.props.ToggleIsFetching(false), 500)
+        usersApi.getUsers(page, this.props.pageSize).then(
+            data => {
+                setTimeout(() => this.props.ToggleIsFetching(false), 200)
                 //this.props.toggleIsFetching(false);
-                this.props.SetUsers(response.data.items)
+                this.props.SetUsers(data.items)
             }
         );
     }
