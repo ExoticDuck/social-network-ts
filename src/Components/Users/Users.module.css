@@ -35,6 +35,10 @@
     color: #fdbe34;
 }
 
+.FollowButton:disabled {
+    background: lightgrey;
+}
+
 .UserCard {
     width: 350px;
     height: 120px;

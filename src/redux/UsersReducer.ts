@@ -2,17 +2,19 @@
 
 const FOLLOW = "FOLLOW"
 const UNFOLLOW ="UNFOLLOW"
-const SET_USERS = "SET_USERS"
-const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
-const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT"
-const TOGGLE_IS_FETHING = "TOGGLE_IS_FETCHING";
+const SET_USERS = "SET-USERS"
+const SET_CURRENT_PAGE = "SET-CURRENT-PAGE"
+const SET_TOTAL_USERS_COUNT = "SET-TOTAL-USERS-COUNT"
+const TOGGLE_IS_FETHING = "TOGGLE-IS-FETCHING";
+const TOGGLE_FOLLOWING_IN_PROGRESS = "TOGGLE-FOLLOWING-IN-PROGRESS"
 
 export type UsersPageType = {
     users: Array<UserType>, 
     pageSize: number,
     totalUsersCount: number,
     currentPage: number,
-    isFetching: boolean
+    isFetching: boolean,
+    followingInProgress: number[]
 }
 
 export type UserType = {
@@ -32,7 +34,8 @@ let initialState: UsersPageType = {
     pageSize: 5,
     totalUsersCount: 0, 
     currentPage: 1,
-    isFetching: false
+    isFetching: false,
+    followingInProgress: []
 }
 
 
@@ -86,11 +89,17 @@ const UsersReducer = (state: UsersPageType = initialState, action: UsersACType) 
                 isFetching: action.payload.isFetching
             }
         }
+        case TOGGLE_FOLLOWING_IN_PROGRESS: {
+            return {
+                ...state, 
+                followingInProgress: action.payload.following ? [...state.followingInProgress, action.payload.userId] : [...state.followingInProgress.filter(id => id !== action.payload.userId)] 
+            }
+        }
         default: return state;
     }
 }
 
-export type UsersACType = FollowACType | UnfollowACType | SetUsersACType | SetCurrentPageACType | SetTotalUsersCountACType | ToggleIsFetchingACType;
+export type UsersACType = FollowACType | UnfollowACType | SetUsersACType | SetCurrentPageACType | SetTotalUsersCountACType | ToggleIsFetchingACType | ToggleFollowingInProgressACType;
 
 export type FollowACType = ReturnType<typeof Follow>
 export const Follow = (id: number) => {
@@ -143,6 +152,16 @@ export const ToggleIsFetching = (isFetching: boolean) => {
         type: TOGGLE_IS_FETHING,
         payload: {
             isFetching: isFetching
+        }
+    } as const
+}
+export type ToggleFollowingInProgressACType = ReturnType<typeof ToggleFollowingInProgress>
+export const ToggleFollowingInProgress = (following: boolean, userId: number) => {
+    return {
+        type: TOGGLE_FOLLOWING_IN_PROGRESS,
+        payload: {
+            following,
+            userId
         }
     } as const
 }
