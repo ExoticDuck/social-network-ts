@@ -56,24 +56,10 @@ const UsersAPIComponent = (props: UsersAPIPropsType) => {
                         <div className={s.followBox}>
                             {
                                 user.followed ? <button disabled={props.followingInProgress.some(id => id === user.id)} className={s.FollowButton} onClick={() => {
-                                    props.ToggleFollowingInProgress(true, user.id)
-                                    followApi.unfollow(user.id).then(response => {
-                                        debugger
-                                        if(response.data.resultCode === 0) {
-                                            props.unfollow(user.id)
-                                        }
-                                        props.ToggleFollowingInProgress(false, user.id);
-                                    })
-                                    }}>Unfollow</button> : <button disabled={props.followingInProgress.some(id => id === user.id)} className={s.FollowButton} onClick={() => {
-                                        props.ToggleFollowingInProgress(true, user.id)
-                                        followApi.follow(user.id).then(response => {
-                                            debugger
-                                            if(response.data.resultCode === 0) {
-                                                props.follow(user.id)
-                                            }
-                                            props.ToggleFollowingInProgress(false, user.id);
-                                        })
-                                    }}>Follow</button>
+                                    props.unfollow(user.id)
+                                }}>Unfollow</button> : <button disabled={props.followingInProgress.some(id => id === user.id)} className={s.FollowButton} onClick={() => {
+                                    props.follow(user.id)
+                                }}>Follow</button>
                             }
                         </div>
                     </div>
