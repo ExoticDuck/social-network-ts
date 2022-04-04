@@ -1,3 +1,5 @@
+import { Dispatch } from "redux";
+import { usersApi } from "../api/api";
 import { PostType } from "./store";
 
 
@@ -42,7 +44,7 @@ let initialState: ProfilePageType = {
         { id: 2, message: "aaaaaa", likesCount: 1 }
     ],
     newPostText: "",
-    profile: null 
+    profile: null
 }
 
 const ProfileReducer = (state: ProfilePageType = initialState, action: GeneralACType) => {
@@ -50,13 +52,13 @@ const ProfileReducer = (state: ProfilePageType = initialState, action: GeneralAC
         case ADD_POST: {
             let id = state.postData.length + 1;
             let newPost = { id: id, message: state.newPostText, likesCount: 0 };
-            return {...state, postData: [...state.postData, newPost], newPostText: ""};
+            return { ...state, postData: [...state.postData, newPost], newPostText: "" };
         }
         case UPDATE_NEW_POST_TEXT: {
-            return {...state, newPostText: action.payload.newText};
+            return { ...state, newPostText: action.payload.newText };
         }
-        case SET_USER_PROFILE : {
-            return {...state, profile: action.payload.profile}
+        case SET_USER_PROFILE: {
+            return { ...state, profile: action.payload.profile }
         }
         default: return state;
     }
@@ -88,6 +90,14 @@ export const SetUserProfile = (profile: ProfileType) => {
             profile: profile
         }
     } as const
+}
+
+export const getUserProfile = (userId: number) => {
+    return (dispatch: Dispatch) => usersApi.getProfile(userId)
+    .then(
+        response => {
+        dispatch(SetUserProfile(response.data));
+    });
 }
 
 
