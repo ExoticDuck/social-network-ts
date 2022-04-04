@@ -3,8 +3,6 @@ import { UserType } from "../../redux/UsersReducer";
 import s from "./Users.module.css"
 import userPic from "../../img/user.png"
 import { NavLink } from 'react-router-dom';
-import axios from "axios";
-import { followApi } from "../../api/api";
 
 export type UsersAPIPropsType = {
     users: Array<UserType>

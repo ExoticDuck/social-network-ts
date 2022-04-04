@@ -1,11 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { AppStateType } from "../../redux/redux-store";
-import axios from "axios";
 import { follow, getUsers, SetCurrentPage, SetTotalUsersCount, SetUsers, ToggleIsFetching, unfollow, UserType } from "../../redux/UsersReducer";
 import UsersAPIComponent from "./UsersAPIComponent";
 import Preloader from "../Preloader/Preloader";
-import { usersApi } from "../../api/api";
 import { ToggleFollowingInProgress } from './../../redux/UsersReducer';
 
 type mapStateToPropsType = {
@@ -17,14 +15,14 @@ type mapStateToPropsType = {
     followingInProgress: number[]
 }
 
-type mapDispatchToPropsType = {
-    follow: (id: number) => void
-    unfollow: (id: number) => void
-    setUsers: (users: Array<UserType>) => void
-    setCurrentPage: (currentPage: number) => void
-    setTotalUsersCount: (totalCount: number) => void
-    toggleIsFetching: (isFetching: boolean) => void
-}
+// type mapDispatchToPropsType = {
+//     follow: (id: number) => void
+//     unfollow: (id: number) => void
+//     setUsers: (users: Array<UserType>) => void
+//     setCurrentPage: (currentPage: number) => void
+//     setTotalUsersCount: (totalCount: number) => void
+//     toggleIsFetching: (isFetching: boolean) => void
+// }
 
 type UsersPropsType = {
     totalUsersCount: number
