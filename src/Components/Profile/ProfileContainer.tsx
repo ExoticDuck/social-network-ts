@@ -9,6 +9,7 @@ import s from "./Profile.module.css";
 import { usersApi } from './../../api/api';
 import { getUserProfile } from './../../redux/ProfileReducer';
 import { withAuthRedirect } from "../../HOC/WithAuthRedirect";
+import { compose } from "redux";
 
 
 type ProfileContainerPropsType = {
@@ -47,13 +48,16 @@ class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
 
 }
 
-let AuthRedirectComponent = withAuthRedirect<ProfileContainerPropsType>(ProfileContainer);
-
-let WithURLContainer = withRouter<any, any>(AuthRedirectComponent);
 let mapStateToProps = (state: AppStateType) => {
     return {
         profile: state.profilePage.profile
     }
 }
 
-export default connect(mapStateToProps, { getUserProfile })(WithURLContainer);
+let ProfileContainerCompose = compose<React.ComponentType>(
+    connect(mapStateToProps, { getUserProfile }),
+    withRouter,
+    withAuthRedirect
+)(ProfileContainer)
+
+export default ProfileContainerCompose;
