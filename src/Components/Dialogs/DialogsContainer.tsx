@@ -8,6 +8,7 @@ import Dialogs from './Dialogs';
 
 type mapStateToPropsType = {
     dialogsPage: MessagePageType
+    isAuth: boolean
 }
 
 type mapDispatchToPropsType = {
@@ -18,7 +19,8 @@ type mapDispatchToPropsType = {
 
 let mapStateToProps = (state: AppStateType): mapStateToPropsType => { //принимает в параметры state
     return { //для данных из стейта 
-        dialogsPage: state.messagesPage
+        dialogsPage: state.messagesPage,
+        isAuth: state.auth.isAuth
     }
 }
 let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {

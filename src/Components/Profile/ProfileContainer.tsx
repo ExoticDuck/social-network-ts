@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import { ProfileType, SetUserProfile } from "../../redux/ProfileReducer";
+import { Redirect, withRouter } from "react-router-dom";
+import { ProfileType} from "../../redux/ProfileReducer";
 import { AppStateType } from "../../redux/redux-store";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProdileInfo/ProfileInfo";
@@ -14,6 +14,7 @@ type ProfileContainerPropsType = {
     profile: ProfileType | null
     getUserProfile: (userId: string) => void
     match: any
+    isAuth: boolean
 }
 
 class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
@@ -29,6 +30,9 @@ class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
 
 
     render() {
+        if(!this.props.isAuth) {
+            return <Redirect to={"/login"}/>
+        }
         return (
             <div className={s.mainContent}>
                 <ProfileInfo profile={this.props.profile} />
@@ -42,7 +46,8 @@ class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
 let WithURLContainer = withRouter<any, any>(ProfileContainer);
 let mapStateToProps = (state: AppStateType) => {
     return {
-        profile: state.profilePage.profile
+        profile: state.profilePage.profile, 
+        isAuth: state.auth.isAuth
     }
 }
 

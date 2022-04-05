@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import {MessagePageType
 } from '../../redux/store';
 import s from './Dialogs.module.css'
@@ -8,6 +8,7 @@ type DialogsPropsType = {
     addMessage: () => void
     updateNewMessageText: (text: string) => void
     dialogsPage: MessagePageType
+    isAuth: boolean
 }
 
 type DialogItemPropsType = {
@@ -46,6 +47,10 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
     let addMessage = () => {
         props.addMessage()
+    }
+
+    if(!props.isAuth) {
+        return <Redirect to={"/login"}/>
     }
 
     return (

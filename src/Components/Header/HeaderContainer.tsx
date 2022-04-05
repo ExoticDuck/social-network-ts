@@ -1,10 +1,8 @@
 import React from "react";
 import Header from "./Header";
-import axios from 'axios';
 import { connect } from "react-redux";
-import { getAuthUserData, setUserData } from './../../redux/AuthReducer';
+import { getAuthUserData } from './../../redux/AuthReducer';
 import { AppStateType } from "../../redux/redux-store";
-import { authApi } from "../../api/api";
 
 type mapStateToPropsType = {
     isAuth: boolean
