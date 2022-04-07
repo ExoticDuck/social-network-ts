@@ -16,9 +16,22 @@ export const usersApi = {
             })
     },
     getProfile(userId: number) {
-        return instance.get(`profile/` + userId)
+        return instance.get(`profile/` + userId);
     }
 }
+
+export const profileApi = {
+    getProfile(userId: number) {
+        return instance.get(`profile/` + userId);
+    },
+    getStatus(userId: number) {
+        return instance.get(`status/` + userId);
+    },
+    updateStatus(status: string) {
+        return instance.put(`status`, {status: status});
+    }
+}
+
 
 export const authApi = {
     getMe() {
