@@ -20,7 +20,6 @@ class ProfileStatus extends React.Component<ProfileStatusPropsType> {
     deactivateEditMode = () => {
         this.setState({editMode: false});
         this.props.updateUserStatus(this.state.status)
-        debugger
     }
     onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         this.setState({status: e.currentTarget.value})

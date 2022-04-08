@@ -4,6 +4,7 @@ import Preloader from '../../Preloader/Preloader';
 
 import s from "./ProfileInfo.module.css";
 import ProfileStatus from './ProfileStatus';
+import userFoto from "../../../img/user.png"
 
 type ProfileInfoPropsType = {
     profile: ProfileType
@@ -23,7 +24,7 @@ const ProfileInfo: React.FC<any> = (props: ProfileInfoPropsType) => {
             </div>
             <div className={s.descriptionBlock}>
                 <div className={s.Avatar}>
-                    <img src={props.profile.photos.small} alt="" />
+                    <img src={props.profile.photos.small || userFoto} alt="" />
                 </div>
                 <div className={s.description}>
                     <div className={s.Name}>{props.profile.fullName}</div>
