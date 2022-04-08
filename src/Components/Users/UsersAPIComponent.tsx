@@ -23,7 +23,7 @@ const UsersAPIComponent = (props: UsersAPIPropsType) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-    pages.length = 10
+    pages.length = 20
     //console.log(props.totalUsersCount);
     return (
         <div>

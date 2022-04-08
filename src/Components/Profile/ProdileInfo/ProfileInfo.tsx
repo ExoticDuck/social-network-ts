@@ -5,11 +5,13 @@ import Preloader from '../../Preloader/Preloader';
 import s from "./ProfileInfo.module.css";
 import ProfileStatus from './ProfileStatus';
 
-type ProfileInfoPrpsType = {
+type ProfileInfoPropsType = {
     profile: ProfileType
+    updateUserStatus: (userId: string) => void
+    status: string
 }
 
-const ProfileInfo: React.FC<any> = (props: ProfileInfoPrpsType) => {
+const ProfileInfo: React.FC<any> = (props: ProfileInfoPropsType) => {
     debugger
     if(!props.profile) {
         return <div><Preloader/></div>
@@ -25,7 +27,7 @@ const ProfileInfo: React.FC<any> = (props: ProfileInfoPrpsType) => {
                 </div>
                 <div className={s.description}>
                     <div className={s.Name}>{props.profile.fullName}</div>
-                    <ProfileStatus status={props.profile.aboutMe}/>
+                    <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
                 </div>
             </div>
         </div>
