@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { compose, Dispatch } from 'redux';
-import { addMessageAC, updateNewMessageTextAC } from '../../redux/MessagesReducer';
+import { addMessageAC} from '../../redux/MessagesReducer';
 import { AppStateType } from '../../redux/redux-store';
 import { MessagePageType } from '../../redux/store';
 import Dialogs, { DialogsPropsType } from './Dialogs';
@@ -13,8 +13,7 @@ type mapStateToPropsType = {
 }
 
 type mapDispatchToPropsType = {
-    addMessage: () => void
-    updateNewMessageText: (text: string) => void
+    addMessage: (value: string) => void
 }
 
 let mapStateToProps = (state: AppStateType): mapStateToPropsType => { //принимает в параметры state
@@ -24,8 +23,7 @@ let mapStateToProps = (state: AppStateType): mapStateToPropsType => { //прин
 }
 let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     return { //для коллбэков
-        addMessage: () => {dispatch(addMessageAC())},
-        updateNewMessageText: (text: string) => {dispatch(updateNewMessageTextAC(text));},
+        addMessage: (value: string) => {dispatch(addMessageAC(value))}
     }
 }
 

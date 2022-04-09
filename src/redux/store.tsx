@@ -38,7 +38,6 @@ export type ProfilePageType = {
 export type MessagePageType = {
     dialogsData: Array<DialogType>
     messagesData: Array<MessageType>
-    newMessageText: string
 }
 export type SidebarPageType = {
     friends: Array<FriendType>
@@ -77,8 +76,7 @@ let store: StoreType = {
                 { id: 4, text: "Hello my friend;)" },
                 { id: 5, text: "Yo!" },
                 { id: 6, text: "Goodbye!" },
-            ],
-            newMessageText: ""
+            ]
         },
         sidebar: {
             friends: [

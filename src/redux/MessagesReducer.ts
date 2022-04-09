@@ -1,6 +1,5 @@
 import {MessagePageType} from "./store"
 
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 const SEND_MESSAGE = "ADD-MESSAGE";
 
 let initialState: MessagePageType = {
@@ -19,41 +18,29 @@ let initialState: MessagePageType = {
         { id: 4, text: "Hello my friend;)" },
         { id: 5, text: "Yo!" },
         { id: 6, text: "Goodbye!" },
-    ],
-    newMessageText: ""
+    ]
 }
 
 const MessagesReducer = (state: MessagePageType = initialState, action: GeneralACType) => {
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_TEXT: {
-            return {...state, newMessageText: action.payload.newText}
-        }
         case SEND_MESSAGE: {
             let id = state.messagesData.length + 1;
-            let newMessage = {id: id, text: state.newMessageText};
-            return {...state, messagesData: [...state.messagesData, newMessage], newMessageText: ""}
+            let newMessage = {id: id, text: action.payload.value};
+            return {...state, messagesData: [...state.messagesData, newMessage]}
             
         }
         default: return state;
     }
 }
 
-export type GeneralACType =  addMessageACType | updateNewMessageTextACType;
+export type GeneralACType =  addMessageACType;
 
 export type addMessageACType = ReturnType<typeof addMessageAC>
-export const addMessageAC = () => {
+export const addMessageAC = (value: string) => {
     return {
-        type: SEND_MESSAGE
-    } as const
-}
-
-
-export type updateNewMessageTextACType = ReturnType<typeof updateNewMessageTextAC>
-export const updateNewMessageTextAC = (text: string) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_TEXT,
+        type: SEND_MESSAGE,
         payload: {
-            newText: text
+            value
         }
     } as const
 }

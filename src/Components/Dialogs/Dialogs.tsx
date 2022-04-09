@@ -1,11 +1,13 @@
 import React from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
-import {MessagePageType
+import {
+    MessagePageType
 } from '../../redux/store';
 import s from './Dialogs.module.css'
+import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 export type DialogsPropsType = {
-    addMessage: () => void
+    addMessage: (value: string) => void
     updateNewMessageText: (text: string) => void
     dialogsPage: MessagePageType
 }
@@ -44,8 +46,12 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
         props.updateNewMessageText(text)
     }
 
-    let addMessage = () => {
-        props.addMessage()
+    // let addMessage = () => {
+    //     props.addMessage()
+    // }
+
+    let addNewMessage = (values: AddMessageType) => {
+        props.addMessage(values.newMessageBody)
     }
 
     return (
@@ -55,17 +61,31 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
             </div>
             <div className={s.messages}>
                 {messagesItems}
-                <div>
-                    <div>
-                        <textarea onChange={messageOnChange} value={props.dialogsPage.newMessageText} />
-                    </div>
-                    <div>
-                        <button onClick={addMessage}>Send</button>
-                    </div>
-                </div>
+                <AddMessageFormRedux onSubmit={addNewMessage}/>
             </div>
         </div>
     );
 }
+
+type AddMessageType = {
+    newMessageBody: string
+}
+
+const AddMessageForm: React.FC<InjectedFormProps<AddMessageType>> = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field name='newMessageBody' component={"textarea"} placeholder="Enter your message"/>
+            </div>
+            <div>
+                <button>Send</button>
+            </div>
+        </form>
+    )
+}
+
+const AddMessageFormRedux = reduxForm<AddMessageType>({
+    form: "dialogAddMessageForm"
+})(AddMessageForm)
 
 export default Dialogs;
