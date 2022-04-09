@@ -31,7 +31,6 @@ export type FriendType = {
 }
 export type ProfilePageType = {
     postData: Array<PostType>
-    newPostText: string
     profile: ProfileType | null
     status: string
 }
@@ -48,7 +47,7 @@ export type StateType = {
     sidebar: SidebarPageType
 }
 
-let store: StoreType = {
+let store: any = {
     _state: {
         profilePage: {
             postData: [
@@ -56,7 +55,6 @@ let store: StoreType = {
                 { id: 2, message: "it is my firt post", likesCount: 15 },
                 { id: 2, message: "aaaaaa", likesCount: 1 }
             ],
-            newPostText: "", 
             profile: null,
             status: ""
         },
@@ -101,15 +99,15 @@ let store: StoreType = {
         let id = this._state.profilePage.postData.length + 1;
         let newPost = { id: id, message: this._state.profilePage.newPostText, likesCount: 0 };
         this._state.profilePage.postData.push(newPost);
-        this._state.profilePage.newPostText = "";
+        //this._state.profilePage.newPostText = "";
         this._callSubscriber(this._state);
     },
     updateNewPostText(newText: string) {
-        this._state.profilePage.newPostText = newText;
+        //this._state.profilePage.newPostText = newText;
         this._callSubscriber(this._state);
     },
-    dispatch(action) {
-        this._state.profilePage = ProfileReducer(this._state.profilePage, action); //возвращает стейт
+    dispatch(action: any) {
+        // this._state.profilePage = ProfileReducer(this._state.profilePage, action); //возвращает стейт
         this._state.messagesPage = MessagesReducer(this._state.messagesPage, action); //возвращает стейт
         this._state.sidebar = SidebarReducer(this._state.sidebar, action); //возвращает стейт
 

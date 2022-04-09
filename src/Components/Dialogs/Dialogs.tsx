@@ -40,16 +40,6 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
     let dialogItems = props.dialogsPage.dialogsData.map((d) => <DialogItem name={d.name} id={d.id} />);
     let messagesItems = props.dialogsPage.messagesData.map((m) => <Message text={m.text} />);
 
-
-    let messageOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        let text = e.currentTarget.value;
-        props.updateNewMessageText(text)
-    }
-
-    // let addMessage = () => {
-    //     props.addMessage()
-    // }
-
     let addNewMessage = (values: AddMessageType) => {
         props.addMessage(values.newMessageBody)
     }
