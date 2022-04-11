@@ -17,14 +17,17 @@ type LoginPropsType = {
 }
 
 const Login = (props: LoginPropsType) => {
-debugger
+    debugger
+    if(props.isAuth) {
+        return <Redirect to={"/profile"}/>
+    }
+
     let onSubmitHandler = (formData: FormDataType) => {
         props.login(formData.login, formData.password, formData.rememberMe)
     }
 
-    if(props.isAuth) {
-        return <Redirect to={"profile"}/>
-    }
+    if(props.isAuth) return <Redirect to="/profile" />
+    
 
     return (
         <div className={s.LoginPage}>

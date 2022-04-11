@@ -22,8 +22,7 @@ const AuthReducer = (state: initialStateType = initialState, action: GeneralACTy
         case SET_USER_DATA: {
             return {
                 ...state,
-                ...action.payload,
-                isAuth: action.payload.isAuth
+                ...action.payload
             }
         }
         default: return state;
@@ -47,6 +46,7 @@ export const setUserData = (id: number | null, email: string | null, login: stri
 export type setUserDataACType = ReturnType<typeof setUserData>
 
 export const getAuthUserData = () => (dispatch: Dispatch) => {
+    debugger
         authApi.getMe()
             .then(response => {
                 if (response.data.resultCode === 0) {
@@ -62,7 +62,7 @@ export const login = (email: string, password: string, rememberMe: boolean) => {
         authApi.login(email, password, rememberMe)
             .then(response => {
                 if (response.data.resultCode === 0) {
-                    getAuthUserData()
+                    //dispatch(getAuthUserData());
                 }
             })
     }
