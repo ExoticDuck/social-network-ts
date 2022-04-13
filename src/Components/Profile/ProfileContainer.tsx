@@ -19,6 +19,8 @@ type ProfileContainerPropsType = {
     updateUserStatus: (userId: string) => void
     match: any
     status: string
+    authorizedUserId: number
+    isAuth: boolean
 }
 
 
@@ -28,7 +30,7 @@ class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
         debugger
         let userId = this.props.match?.params.userId;
         if (!userId || userId === ":userId") {
-            userId = "22619";
+            userId = this.props.authorizedUserId.toString();
         }
         this.props.getUserProfile(userId);
         this.props.getUserStatus(userId);
@@ -50,7 +52,9 @@ class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
 let mapStateToProps = (state: AppStateType) => {
     return {
         profile: state.profilePage.profile,
-        status: state.profilePage.status
+        status: state.profilePage.status,
+        authorizedUserId: state.auth.id,
+        isAuth: state.auth.isAuth
     }
 }
 
