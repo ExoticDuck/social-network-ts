@@ -1,5 +1,5 @@
 import { Dispatch } from "redux"
-import { stopSubmit } from "redux-form"
+import { FormAction, stopSubmit } from "redux-form"
 import { ThunkAction } from "redux-thunk"
 import { authApi } from "../api/api"
 import { AppStateType } from "./redux-store"
@@ -32,8 +32,8 @@ const AuthReducer = (state: initialStateType = initialState, action: GeneralACTy
     }
 }
 
-type GeneralACType = setUserDataACType | stopSubmitType;
-type stopSubmitType = ReturnType<typeof stopSubmit>
+type GeneralACType = setUserDataACType | FormAction;
+
 export const setUserData = (id: number | null, email: string | null, login: string | null, isAuth: boolean) => {
     return {
         type: SET_USER_DATA,
@@ -49,7 +49,7 @@ export const setUserData = (id: number | null, email: string | null, login: stri
 export type setUserDataACType = ReturnType<typeof setUserData>
 type ThunkType = ThunkAction<void, AppStateType, unknown, GeneralACType>;
 
-export const getAuthUserData = () => (dispatch: Dispatch) => {
+export const getAuthUserData = ():ThunkType => (dispatch) => {
     debugger
         authApi.getMe()
             .then(response => {

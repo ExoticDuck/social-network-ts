@@ -1,12 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { getUserStatus, ProfileType, updateUserStatus} from "../../redux/ProfileReducer";
 import { AppStateType } from "../../redux/redux-store";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProdileInfo/ProfileInfo";
 import s from "./Profile.module.css";
-import { usersApi } from './../../api/api';
 import { getUserProfile } from './../../redux/ProfileReducer';
 import { withAuthRedirect } from "../../HOC/WithAuthRedirect";
 import { compose } from "redux";
