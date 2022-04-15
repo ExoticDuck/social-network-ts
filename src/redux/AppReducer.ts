@@ -39,7 +39,9 @@ export type setInitializedACType = ReturnType<typeof setInitialized>
 
 export const initializeApp = ():ThunkType => (dispatch) => {
     let promise = dispatch(getAuthUserData());
-    promise.then(() => {})
+    Promise.all([promise]).then(() => {
+    dispatch(setInitialized())
+  });
 }
 
 export default AppReducer;

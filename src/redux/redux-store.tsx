@@ -6,6 +6,7 @@ import SidebarReducer from "./SidebarReducer";
 import UsersReducer from "./UsersReducer";
 import thunkMiddleware from "redux-thunk";
 import {reducer as formReducer } from 'redux-form';
+import AppReducer from "./AppReducer";
 
 let reducers = combineReducers({
     profilePage: ProfileReducer,
@@ -13,7 +14,8 @@ let reducers = combineReducers({
     sidebar: SidebarReducer,
     usersPage: UsersReducer,
     auth: AuthReducer,
-    form: formReducer
+    form: formReducer, 
+    app: AppReducer
 })
 
 export type AppStateType = ReturnType<typeof reducers>;

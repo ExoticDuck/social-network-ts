@@ -15,11 +15,14 @@ import { connect } from 'react-redux';
 import { getAuthUserData } from './redux/AuthReducer';
 import { compose } from 'redux';
 import { initializeApp } from './redux/AppReducer';
+import { AppStateType } from './redux/redux-store';
+import Preloader from './Components/Preloader/Preloader';
 
-//* урок 79 закончен
+//* урок 80 закончен
 
 type AppPropsType = {
   initializeApp: () => void
+  initialized: boolean
 }
 
 // const App: React.FC<AppPropsType> = (props) => {
@@ -47,6 +50,9 @@ class App extends React.Component<AppPropsType, {}> {
     this.props.initializeApp();
   }
   render() {
+    if(!this.props.initialized) {
+      return <Preloader/>
+    }
     return (
       <div className="App">
         <HeaderContainer />
@@ -67,6 +73,16 @@ class App extends React.Component<AppPropsType, {}> {
   }
 }
 
+type mapStateToPropsType = {
+  initialized: boolean
+}
+
+let mapStateToProps = (state: AppStateType): mapStateToPropsType => {
+  return {
+    initialized: state.app.initialized
+  }
+}
+
 export default compose<React.ComponentType>(
   withRouter,
-  connect(null, { initializeApp }))(App);
+  connect(mapStateToProps, { initializeApp }))(App);

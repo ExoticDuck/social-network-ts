@@ -20,6 +20,7 @@ type ProfileContainerPropsType = {
     status: string
     authorizedUserId: number
     isAuth: boolean
+    history: any
 }
 
 
@@ -30,6 +31,9 @@ class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
         let userId = this.props.match?.params.userId;
         if (!userId || userId === ":userId") {
             userId = this.props.authorizedUserId.toString();
+            if(!userId) {
+                this.props.history.push("/login")
+            }
         }
         this.props.getUserProfile(userId);
         this.props.getUserStatus(userId);
