@@ -1,7 +1,4 @@
-import { Dispatch } from "redux"
-import { FormAction, stopSubmit } from "redux-form"
 import { ThunkAction } from "redux-thunk"
-import { authApi } from "../api/api"
 import { AppStateType } from "./redux-store"
 import { getAuthUserData } from './AuthReducer';
 

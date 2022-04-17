@@ -171,6 +171,7 @@ export const ToggleFollowingInProgress = (following: boolean, userId: number) =>
 export const getUsers = (currentPage: number, pageSize: number) => {
     return (dispatch: Dispatch) => {
         dispatch(ToggleIsFetching(true));
+        dispatch(SetCurrentPage(currentPage));
         usersApi.getUsers(currentPage, pageSize).then(
             data => {
                 setTimeout(() => dispatch(ToggleIsFetching(false)), 200)

@@ -5,6 +5,7 @@ import { follow, getUsers, SetCurrentPage, SetTotalUsersCount, SetUsers, ToggleI
 import UsersAPIComponent from "./UsersAPIComponent";
 import Preloader from "../Preloader/Preloader";
 import { ToggleFollowingInProgress } from './../../redux/UsersReducer';
+import { getPageSizeSelector, getTotalUsersCountSelector, getUsersSelector, getCurrentPageSelector, getIsFetchingSelector, getFollowingProgressSelector } from './../../redux/users-selectors';
 
 type mapStateToPropsType = {
     users: Array<UserType>,
@@ -73,14 +74,24 @@ class UsersClass extends React.Component<UsersPropsType, {}> {
     }
 }
 
+// let mapStateToProps = (state: AppStateType): mapStateToPropsType => {
+//     return {
+//         users: state.usersPage.users,
+//         pageSize: state.usersPage.pageSize,
+//         totalUsersCount: state.usersPage.totalUsersCount,
+//         currentPage: state.usersPage.currentPage,
+//         isFetching: state.usersPage.isFetching,
+//         followingInProgress: state.usersPage.followingInProgress
+//     }
+// }
 let mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
+        users: getUsersSelector(state),
+        pageSize: getPageSizeSelector(state),
+        totalUsersCount: getTotalUsersCountSelector(state),
+        currentPage: getCurrentPageSelector(state),
+        isFetching: getIsFetchingSelector(state),
+        followingInProgress: getFollowingProgressSelector(state)
     }
 }
 

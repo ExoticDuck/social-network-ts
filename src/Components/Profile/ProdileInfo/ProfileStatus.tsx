@@ -1,7 +1,4 @@
 import React, { ChangeEvent } from 'react';
-import { ProfileType } from '../../../redux/ProfileReducer';
-import Preloader from '../../Preloader/Preloader';
-
 import s from "./ProfileInfo.module.css";
 
 type ProfileStatusPropsType = {

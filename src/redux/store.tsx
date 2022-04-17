@@ -1,5 +1,5 @@
 import MessagesReducer from "./MessagesReducer"
-import ProfileReducer, { ProfileType } from "./ProfileReducer"
+import { ProfileType } from "./ProfileReducer"
 import SidebarReducer from "./SidebarReducer"
 
 export type StoreType = {
