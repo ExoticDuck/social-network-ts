@@ -26,7 +26,7 @@ const UsersAPIComponent = (props: UsersAPIPropsType) => {
     pages.length = 20
     //console.log(props.totalUsersCount);
     return (
-        <div>
+        <div className={s.UsersPage}>
             <div className={s.PagesContainer}>
                 {
                     pages.map(page => <span onClick={(e) => { props.onPageChanged(page) }} className={props.currentPage === page ? s.SelectedPage : s.page}>{page} </span>)

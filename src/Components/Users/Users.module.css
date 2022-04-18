@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400&display=swap');
 
+.UsersPage {
+    box-sizing: border-box;
+    background: #fff;
+    width: 980px;
+    margin: 0 auto;
+    padding: 10px 70px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 16px 5px rgba(34, 60, 80, 0.1);
+}
+
 .Avatar img {
     height: 80px;
     border-radius: 50%;
@@ -43,6 +53,10 @@
     width: 350px;
     height: 120px;
     margin-bottom: 15px;
+    border-radius: 10px;
+    -webkit-box-shadow: 11px 11px 10px 0px rgba(34, 60, 80, 0.22);
+-moz-box-shadow: 11px 11px 10px 0px rgba(34, 60, 80, 0.22);
+box-shadow: 11px 11px 10px 0px rgba(34, 60, 80, 0.22);
 }
 
 .avatarBlock {
@@ -52,6 +66,9 @@
     position: relative;
     background-color: #330b61;
     border-radius: 10px 0 0 10px;
+    -webkit-box-shadow: 11px 11px 10px 0px rgba(34, 60, 80, 0.22);
+-moz-box-shadow: 11px 11px 10px 0px rgba(34, 60, 80, 0.22);
+box-shadow: 11px 11px 10px 0px rgba(34, 60, 80, 0.22);
 }
 
 .userInfo {
