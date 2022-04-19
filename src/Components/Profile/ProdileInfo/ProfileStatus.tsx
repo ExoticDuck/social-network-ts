@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { updateUserStatus } from '../../../redux/ProfileReducer';
 import s from "./ProfileInfo.module.css";
 
@@ -11,6 +11,10 @@ const ProfileStatus = (props: ProfileStatusPropsType) => {
     debugger
     const [status, setStatus] = useState<string>(props.status);
     const [editMode, setEditMode] = useState<boolean>(false);
+
+    useEffect(() => {
+        setStatus(props.status);
+    },[props.status])
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setStatus(e.currentTarget.value);
