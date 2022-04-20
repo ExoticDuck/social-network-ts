@@ -16,7 +16,29 @@ type MyPostsPropsType = {
     addPost: (text: string) => void
 }
 
-const MyPosts: React.FC<MyPostsPropsType> = (props) => {
+// class MyPosts extends React.PureComponent<MyPostsPropsType> {
+
+    
+//     render() {
+//         let postsItems = this.props.posts.map((p) => <Post message={p.message} likesCount={p.likesCount} />)
+
+//         let addNewPost = (values: AddPostDataType) => {
+//             this.props.addPost(values.post)
+//         }
+
+//         return (
+//             <div className={s.PostsContainer}>
+//                 <h3>My posts</h3>
+//                 <AddPostFormRedux onSubmit={addNewPost} />
+//                 <div className={s.posts}>
+//                     {postsItems}
+//                 </div>
+//             </div>
+//         )
+//     }
+// }
+ 
+const MyPosts: React.FC<MyPostsPropsType> = React.memo((props) => {
 
     let postsItems = props.posts.map((p) => <Post message={p.message} likesCount={p.likesCount} />)
 
@@ -33,7 +55,7 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
             </div>
         </div>
     )
-}
+});
 
 export type AddPostDataType = {
     post: string
@@ -45,7 +67,7 @@ let AddPostForm: React.FC<InjectedFormProps<AddPostDataType>> = (props) => {
     return (
         <form className={s.Form} onSubmit={props.handleSubmit}>
             <div className={s.Textfield}>
-                <Field name='post' component={Textarea} validate={[requiredField, maxLength10]}/>
+                <Field name='post' component={Textarea} validate={[requiredField, maxLength10]} />
             </div>
             <div className={s.ButtonBox}>
                 <button>Add post</button>
