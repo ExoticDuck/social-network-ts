@@ -6,6 +6,7 @@ import { PostType } from "./store";
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
 const SET_STATUS = "SET-USER-STATUS";
+const DELETE_POST = "DELETE-POST"
 
 type ContactsType = {
     facebook: string | null;
@@ -41,7 +42,7 @@ let initialState: ProfilePageType = {
     postData: [
         { id: 1, message: "hi, how are you?", likesCount: 12 },
         { id: 2, message: "it is my firt post", likesCount: 15 },
-        { id: 2, message: "aaaaaa", likesCount: 1 }
+        { id: 3, message: "aaaaaa", likesCount: 1 }
     ],
     profile: null,
     status: ""
@@ -61,11 +62,14 @@ const ProfileReducer = (state: ProfilePageType = initialState, action: GeneralAC
             debugger
             return {...state, status: action.payload.status}
         }
+        case DELETE_POST: {
+            return {...state, postData: state.postData.filter(p => p.id !== action.payload.id)}
+        }
         default: return state;
     }
 }
 
-export type GeneralACType = addPostACType | SetUserProfileACType | SetUserStatusACType;
+export type GeneralACType = addPostACType | SetUserProfileACType | SetUserStatusACType | deletePostACType;
 
 export type addPostACType = ReturnType<typeof addPostAC>
 export const addPostAC = (text: string) => {
@@ -73,6 +77,15 @@ export const addPostAC = (text: string) => {
         type: ADD_POST,
         payload: {
             text
+        }
+    } as const
+}
+export type deletePostACType = ReturnType<typeof deletePostAC>
+export const deletePostAC = (id: number) => {
+    return {
+        type: DELETE_POST,
+        payload: {
+            id
         }
     } as const
 }
