@@ -4,7 +4,7 @@ import { ThunkAction } from "redux-thunk"
 import { authApi } from "../api/api"
 import { AppStateType } from "./redux-store"
 
-const SET_USER_DATA = "SET_USER_DATA"
+const SET_USER_DATA = "social-network/auth/SET_USER_DATA"
 
 type initialStateType = {
     id: number | null
@@ -49,39 +49,32 @@ export const setUserData = (id: number | null, email: string | null, login: stri
 export type setUserDataACType = ReturnType<typeof setUserData>
 type ThunkType = ThunkAction<void, AppStateType, unknown, GeneralACType>;
 
-export const getAuthUserData = ():ThunkType => (dispatch) => {
-    debugger
-        authApi.getMe()
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    let { id, email, login } = response.data.data;
-                    dispatch(setUserData(id, email, login, true));
-                }
-            })
-    }
+export const getAuthUserData = (): ThunkType => async (dispatch) => {
+    let response = await authApi.getMe();
+            if (response.data.resultCode === 0) {
+                let { id, email, login } = response.data.data;
+                dispatch(setUserData(id, email, login, true));
+            }
+}
 
 
 export const login = (email: string, password: string, rememberMe: boolean): ThunkType => {
-    return (dispatch) => {
-        authApi.login(email, password, rememberMe)
-            .then(response => {
+    return async (dispatch) => {
+        let response = await authApi.login(email, password, rememberMe);
                 if (response.data.resultCode === 0) {
                     dispatch(getAuthUserData());
                 } else {
                     let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-                    dispatch(stopSubmit("login", {_error: message}));
+                    dispatch(stopSubmit("login", { _error: message }));
                 }
-            })
     }
 }
 export const logout = () => {
-    return (dispatch: Dispatch) => {
-        authApi.logout()
-            .then(response => {
+    return async (dispatch: Dispatch) => {
+       let response = await authApi.logout()
                 if (response.data.resultCode === 0) {
                     dispatch(setUserData(null, null, null, false))
                 }
-            })
     }
 }
 
