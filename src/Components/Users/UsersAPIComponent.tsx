@@ -1,8 +1,8 @@
 import React from "react";
 import { UserType } from "../../redux/UsersReducer";
 import s from "./Users.module.css"
-import userPic from "../../img/user.png"
-import { NavLink } from 'react-router-dom';
+import Paginator from "../Paginator/Paginator";
+import User from "./User";
 
 export type UsersAPIPropsType = {
     users: Array<UserType>
@@ -16,52 +16,13 @@ export type UsersAPIPropsType = {
     followingInProgress: number[]
 }
 
-const UsersAPIComponent = (props: UsersAPIPropsType) => {
+const UsersAPIComponent = ({users, follow, unfollow, totalUsersCount, pageSize, onPageChanged, currentPage, ToggleFollowingInProgress, followingInProgress, ...props}: UsersAPIPropsType) => {
 
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
-    }
-    pages.length = 20
-    //console.log(props.totalUsersCount);
     return (
         <div className={s.UsersPage}>
-            <div className={s.PagesContainer}>
-                {
-                    pages.map(page => <span onClick={(e) => { props.onPageChanged(page) }} className={props.currentPage === page ? s.SelectedPage : s.page}>{page} </span>)
-                }
-            </div>
+            <Paginator currentPage={currentPage} totalUsersCount={totalUsersCount} pageSize={pageSize} onPageChanged={onPageChanged}/>
             {
-                props.users.map(user => <div key={user.id} className={s.UserCard}>
-                    <span className={s.avatarBlock}>
-                        <div className={s.Avatar}>
-                            <NavLink to={"/profile/" + user.id}>
-                                <img src={user.photos.small !== null ? user.photos.small : userPic} alt="Avatar" />
-                            </NavLink>
-                        </div>
-
-                    </span>
-                    <div className={s.infoBlock}>
-                        <span className={s.userInfo}>
-                            <div>{user.name}</div>
-                            <div className={s.Status}>{user.status}</div>
-                        </span>
-                        <span className={s.location}>
-                            <div>{'Country'}</div>
-                            <div>{'City'}</div>
-                        </span>
-                        <div className={s.followBox}>
-                            {
-                                user.followed ? <button disabled={props.followingInProgress.some(id => id === user.id)} className={s.FollowButton} onClick={() => {
-                                    props.unfollow(user.id)
-                                }}>Unfollow</button> : <button disabled={props.followingInProgress.some(id => id === user.id)} className={s.FollowButton} onClick={() => {
-                                    props.follow(user.id)
-                                }}>Follow</button>
-                            }
-                        </div>
-                    </div>
-                </div>)
+                users.map(user => <User user={user} follow={follow} unfollow={unfollow} followingInProgress={followingInProgress}/>)
             }
         </div>
     )

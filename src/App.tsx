@@ -16,7 +16,7 @@ import { initializeApp } from './redux/AppReducer';
 import { AppStateType } from './redux/redux-store';
 import Preloader from './Components/Preloader/Preloader';
 
-//* урок 80 закончен
+//* урок 89 закончен
 
 type AppPropsType = {
   initializeApp: () => void
