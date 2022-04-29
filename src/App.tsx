@@ -3,20 +3,20 @@ import './App.css';
 import News from './Components/News/News';
 import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
-import { Route, withRouter } from 'react-router-dom'
+import { BrowserRouter, Route, withRouter } from 'react-router-dom'
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import NavbarContainer from './Components/Navbar/NavbarContainer';
 import { UsersContainer } from './Components/Users/UsersContainer';
 import ProfileContainer from './Components/Profile/ProfileContainer';
 import HeaderContainer from './Components/Header/HeaderContainer';
 import Login from './Components/Login/Login';
-import { connect } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import { compose } from 'redux';
 import { initializeApp } from './redux/AppReducer';
-import { AppStateType } from './redux/redux-store';
+import store, { AppStateType } from './redux/redux-store';
 import Preloader from './Components/Preloader/Preloader';
 
-//* урок 89 закончен
+//* урок 91 закончен
 
 type AppPropsType = {
   initializeApp: () => void
@@ -48,8 +48,8 @@ class App extends React.Component<AppPropsType, {}> {
     this.props.initializeApp();
   }
   render() {
-    if(!this.props.initialized) {
-      return <Preloader/>
+    if (!this.props.initialized) {
+      return <Preloader />
     }
     return (
       <div className="App">
@@ -81,6 +81,18 @@ let mapStateToProps = (state: AppStateType): mapStateToPropsType => {
   }
 }
 
-export default compose<React.ComponentType>(
+let AppContainer = compose<React.ComponentType>(
   withRouter,
   connect(mapStateToProps, { initializeApp }))(App);
+
+let SocialNetworkApp = (props: {}) => {
+  return <React.StrictMode>
+    <BrowserRouter>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </BrowserRouter>
+  </React.StrictMode>
+} 
+
+export default SocialNetworkApp;

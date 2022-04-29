@@ -5,7 +5,7 @@ import { follow, getUsers, SetCurrentPage, SetTotalUsersCount, SetUsers, ToggleI
 import UsersAPIComponent from "./UsersAPIComponent";
 import Preloader from "../Preloader/Preloader";
 import { ToggleFollowingInProgress } from './../../redux/UsersReducer';
-import { getPageSizeSelector, getTotalUsersCountSelector, getUsersSelector, getCurrentPageSelector, getIsFetchingSelector, getFollowingProgressSelector, getUsersSuper } from './../../redux/users-selectors';
+import { getPageSizeSelector, getTotalUsersCountSelector, getCurrentPageSelector, getIsFetchingSelector, getFollowingProgressSelector, getUsersSuper } from './../../redux/users-selectors';
 
 type mapStateToPropsType = {
     users: Array<UserType>,
